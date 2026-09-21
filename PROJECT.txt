@@ -37,10 +37,12 @@ failed sync attempts. Deleted rows remain hidden while awaiting acknowledgment.
 Remote snapshots never overwrite pending local changes. Drafts are not uploaded.
 
 Git evidence
+Repository: https://github.com/nabinoddd/BugTracker
 The included Git bundle preserves commits, feature branches, the hotfix branch,
-and annotated version tags. The push transcript records a local bare repository
-used as origin. This is a Git remote demonstration on the same computer, not a
-hosted repository or independent off-device backup.
+and annotated version tags. GitHub hosts main, feature/room-retrofit,
+feature/lifecycle-retry, hotfix/prevent-duplicate-submissions, and v1.0/v1.1.
+The original local demonstration transcript is retained as historical evidence.
+The GitHub push transcript separately records publication and remote verification.
 
 Verification scope
 Repository tests use real Room with Robolectric and Retrofit with MockWebServer.
