@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.uopeople.bugtracker.EditorStateTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-21T18:04:10" hostname="xetronixmac.local" time="0.072">
+  <properties/>
+  <testcase name="retainedStoreKeepsDraftAcrossOwnerRecreation" classname="edu.uopeople.bugtracker.EditorStateTest" time="0.028"/>
+  <testcase name="savedStateRestoresAllEditorFields" classname="edu.uopeople.bugtracker.EditorStateTest" time="0.02"/>
+  <testcase name="repeatedSubmitCreatesOneIssue" classname="edu.uopeople.bugtracker.EditorStateTest" time="0.024"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

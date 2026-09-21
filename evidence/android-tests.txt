@@ -1,0 +1,9 @@
+Android build and test verification
+
+edu.uopeople.bugtracker.EditorStateTest: 3 tests, 0 failures, 0 errors
+edu.uopeople.bugtracker.RepositoryTest: 8 tests, 0 failures, 0 errors
+
+Gradle tasks: :app:assembleDebug :app:testDebugUnitTest
+BUILD SUCCESSFUL
+Java 17; Gradle 8.9; Android SDK 35; Robolectric Android API 28.
+No emulator or physical-device UI run was performed.

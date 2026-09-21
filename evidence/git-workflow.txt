@@ -1,0 +1,52 @@
+$ git remote add origin ../remote.git
+
+$ git push -u origin main
+branch 'main' set up to track 'origin/main'.
+To ../remote.git
+ * [new branch]      main -> main
+
+$ git push -u origin feature/room-retrofit
+branch 'feature/room-retrofit' set up to track 'origin/feature/room-retrofit'.
+To ../remote.git
+ * [new branch]      feature/room-retrofit -> feature/room-retrofit
+
+$ git push -u origin feature/lifecycle-retry
+branch 'feature/lifecycle-retry' set up to track 'origin/feature/lifecycle-retry'.
+To ../remote.git
+ * [new branch]      feature/lifecycle-retry -> feature/lifecycle-retry
+
+$ git push -u origin hotfix/prevent-duplicate-submissions
+branch 'hotfix/prevent-duplicate-submissions' set up to track 'origin/hotfix/prevent-duplicate-submissions'.
+To ../remote.git
+ * [new branch]      hotfix/prevent-duplicate-submissions -> hotfix/prevent-duplicate-submissions
+
+$ git push origin --tags
+To ../remote.git
+ * [new tag]         v1.0 -> v1.0
+ * [new tag]         v1.1 -> v1.1
+
+$ git ls-remote --heads --tags origin
+17578f2241bcd05e2dc5c742e0c0f4aa65427098	refs/heads/feature/lifecycle-retry
+d4eea675a34780bad2c94f7e77c08fd546c6b531	refs/heads/feature/room-retrofit
+01262e03b0c41f5415cb59cace0ca1899c244b27	refs/heads/hotfix/prevent-duplicate-submissions
+165cf41c3aec62d217f1faa10fead5b9bd77b11c	refs/heads/main
+6a7852fdf73e31d2deb9ceaf5e9f2454076f8d49	refs/tags/v1.0
+6a4c7fdaa377a42ba9b8afcaf8b167f5568cc7eb	refs/tags/v1.0^{}
+49701435d4d3aaec31c8a8b9f28beb32ef3aa1e6	refs/tags/v1.1
+165cf41c3aec62d217f1faa10fead5b9bd77b11c	refs/tags/v1.1^{}
+
+$ git log --oneline --graph --decorate --all
+*   165cf41 (HEAD -> main, tag: v1.1, origin/main) Merge verified duplicate-submission hotfix
+|\  
+| * 01262e0 (origin/hotfix/prevent-duplicate-submissions, hotfix/prevent-duplicate-submissions) Prevent repeated submission taps and verify draft recovery
+|/  
+*   6a4c7fd (tag: v1.0) Merge draft preservation and background synchronization
+|\  
+| * 17578f2 (origin/feature/lifecycle-retry, feature/lifecycle-retry) Add Room and Retrofit verification tests and reproducible Gradle wrapper
+| * ec2aa6f Preserve drafts and schedule lifecycle-aware background retries
+|/  
+*   67d48f4 Merge Room and Retrofit feature
+|\  
+| * d4eea67 (origin/feature/room-retrofit, feature/room-retrofit) Implement Room CRUD, Retrofit synchronization, and revision-aware REST backend
+|/  
+* aa8a52e Initialize Android Bug Tracker project and dependency configuration

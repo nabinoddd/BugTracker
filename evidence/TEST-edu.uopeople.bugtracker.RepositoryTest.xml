@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.uopeople.bugtracker.RepositoryTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-21T18:03:32" hostname="xetronixmac.local" time="38.591">
+  <properties/>
+  <testcase name="conflictDoesNotOverwriteLocalAndCanBeResolved" classname="edu.uopeople.bugtracker.RepositoryTest" time="38.453"/>
+  <testcase name="serverFailureKeepsMutationForRetry" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.024"/>
+  <testcase name="editDuringUploadRemainsPending" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.016"/>
+  <testcase name="offlineFailurePreservesIssue" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.012"/>
+  <testcase name="uploadsCreateUpdateDeleteAndPullsOtherDeviceChanges" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.035"/>
+  <testcase name="diskDatabaseSurvivesReopen" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.019"/>
+  <testcase name="inputValidationDoesNotClearDraft" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.01"/>
+  <testcase name="localCrudAndDraft" classname="edu.uopeople.bugtracker.RepositoryTest" time="0.022"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
