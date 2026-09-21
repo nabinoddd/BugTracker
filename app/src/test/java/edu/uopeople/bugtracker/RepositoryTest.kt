@@ -102,7 +102,7 @@ class RepositoryTest {
         disk = Room.databaseBuilder(context, TrackerDatabase::class.java, "persistence-test.db").build()
         assertTrue(disk.dao().get("durable")!!.dirty)
         assertEquals("Unfinished", disk.dao().draft()!!.title)
-        disk.close(); context.deleteDatabase("persistence-test.db")
+        disk.close(); context.deleteDatabase("persistence-test.db"); Unit
     }
     @Test fun editDuringUploadRemainsPending() = runBlocking {
         val id = repo.submit(Draft(title = "First"))

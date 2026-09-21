@@ -10,6 +10,8 @@ class EditorViewModel(app: Application, private val state: SavedStateHandle) : A
     val repo = (app as TrackerApp).repository
     val draft = MutableStateFlow(Draft())
     val ready = MutableStateFlow(false)
+    val submitting = MutableStateFlow(false)
+    internal var scheduleSync: () -> Unit = { requestSync(app) }
     val message = MutableStateFlow("")
     private val actions = Channel<suspend () -> Unit>(Channel.UNLIMITED)
     init {
@@ -43,23 +45,27 @@ class EditorViewModel(app: Application, private val state: SavedStateHandle) : A
     fun edit(issue: Issue) = change(Draft(issueId = issue.id, title = issue.title,
         description = issue.description, priority = issue.priority, status = issue.status))
     fun submit() {
+        if (!ready.value || submitting.value) return
+        submitting.value = true
         val submitted = draft.value
         actions.trySend {
+            try {
             repo.submit(submitted)
             if (draft.value == submitted) {
                 draft.value = Draft()
                 remember(draft.value)
             }
             message.value = "Issue saved on this device. Sync is scheduled."
-            requestSync(getApplication())
+            scheduleSync()
+            } finally { submitting.value = false }
         }
     }
     fun delete(id: String) { actions.trySend {
         repo.delete(id)
-        requestSync(getApplication())
+        scheduleSync()
     } }
     fun resolve(id: String, keep: Boolean) { actions.trySend {
         repo.resolve(id, keep)
-        requestSync(getApplication())
+        scheduleSync()
     } }
 }

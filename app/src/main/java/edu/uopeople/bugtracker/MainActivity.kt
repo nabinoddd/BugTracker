@@ -60,7 +60,8 @@ class MainActivity : ComponentActivity() {
         sync.setOnClickListener { requestSync(this) }
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch { model.ready.collect { save.isEnabled = it } }
+                launch { kotlinx.coroutines.flow.combine(model.ready, model.submitting) { ready, busy -> ready && !busy }
+                    .collect { save.isEnabled = it } }
                 launch { model.draft.collect { d ->
                     binding = true
                     if (title.text.toString() != d.title) title.setText(d.title)

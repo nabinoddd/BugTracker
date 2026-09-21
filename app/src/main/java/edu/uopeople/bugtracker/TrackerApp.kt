@@ -11,8 +11,8 @@ import kotlinx.coroutines.CancellationException
 import java.io.IOException
 import java.util.concurrent.TimeUnit
 
-class TrackerApp : Application() {
-    val repository by lazy {
+open class TrackerApp : Application() {
+    open val repository: IssueRepository by lazy {
         val db = Room.databaseBuilder(this, TrackerDatabase::class.java, "tracker.db").build()
         val api = Retrofit.Builder().baseUrl("http://10.0.2.2:8080/")
             .addConverterFactory(GsonConverterFactory.create()).build().create(IssueApi::class.java)
