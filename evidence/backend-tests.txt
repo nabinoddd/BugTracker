@@ -1,0 +1,11 @@
+test_conflict_preserves_server_version (test_server.BackendTests.test_conflict_preserves_server_version) ... ok
+test_crud_and_durable_remote_tombstone (test_server.BackendTests.test_crud_and_durable_remote_tombstone) ... ok
+test_delete_before_create_and_retry (test_server.BackendTests.test_delete_before_create_and_retry) ... ok
+test_explicit_resolution_after_remote_delete (test_server.BackendTests.test_explicit_resolution_after_remote_delete) ... ok
+test_lost_response_retry_is_idempotent (test_server.BackendTests.test_lost_response_retry_is_idempotent) ... ok
+test_validation_and_token_reuse (test_server.BackendTests.test_validation_and_token_reuse) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.020s
+
+OK
