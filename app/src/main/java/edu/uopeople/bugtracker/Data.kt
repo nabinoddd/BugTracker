@@ -2,7 +2,11 @@ package edu.uopeople.bugtracker
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.PUT
+import retrofit2.http.DELETE
+import retrofit2.http.Path
+import retrofit2.http.Body
 import java.util.UUID
 
 @Entity(tableName = "issues")
@@ -59,5 +63,5 @@ interface IssueApi {
     @GET("issues/{id}") suspend fun one(@Path("id") id: String): RemoteIssue
     @PUT("issues/{id}") suspend fun put(@Path("id") id: String, @Body body: Mutation): RemoteIssue
     @DELETE("issues/{id}") suspend fun delete(@Path("id") id: String,
-        @Query("baseRevision") revision: Long, @Query("mutation") mutation: String): RemoteIssue
+        @retrofit2.http.Query("baseRevision") revision: Long, @retrofit2.http.Query("mutation") mutation: String): RemoteIssue
 }
