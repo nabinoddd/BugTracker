@@ -1,0 +1,49 @@
+BUG TRACKER IMPLEMENTATION
+CS 4405 Mobile Applications - Unit 3
+
+Android client: Kotlin, Room 2.6.1, Retrofit 2.11.0, WorkManager 2.9.1.
+Build environment: Java 17, Gradle 8.9, Android compile SDK 35; minimum Android 26.
+The wrapper records the Gradle distribution. Dependencies are pinned to compatible versions.
+
+Execution specification
+Backend command from project root: python3 backend/server.py
+Android build and automated checks: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+Backend checks: python3 -m unittest discover -s backend -v
+The backend binds to 127.0.0.1:8080 and creates backend/issues.db.
+The standard Android emulator reaches the host through http://10.0.2.2:8080/.
+The classroom endpoint has no authentication and uses HTTP. It is not a public deployment.
+
+Data and synchronization
+Data.kt defines the entity schema, DAO, database, JSON models, and Retrofit interface.
+IssueRepository.kt implements local CRUD, uploads, downloads, mutation acknowledgments, and conflict resolution.
+TrackerApp.kt configures the database, Retrofit instance, background work, and retry classification.
+EditorViewModel.kt preserves draft fields and serializes editor actions.
+MainActivity.kt contains the issue editor, list, sync status, and conflict choices.
+backend/server.py provides persistent revision checks and idempotent writes.
+
+REST contract
+GET /issues returns all records, including retained deletion tombstones.
+GET /issues/{id} returns an individual record or HTTP 404.
+PUT /issues/{id} creates or updates using title, description, priority, status,
+createdAt, baseRevision, and mutation. New records use baseRevision 0.
+DELETE /issues/{id}?baseRevision=N&mutation=TOKEN persists a deletion tombstone.
+A successful write returns the complete record with its incremented revision.
+HTTP 409 preserves both sides until the user explicitly selects a version.
+Repeated identical mutation tokens return the original successful response.
+Reusing a token for different data returns HTTP 400.
+
+The local database is the source displayed by the screen. A dirty row survives
+failed sync attempts. Deleted rows remain hidden while awaiting acknowledgment.
+Remote snapshots never overwrite pending local changes. Drafts are not uploaded.
+
+Git evidence
+The included Git bundle preserves commits, feature branches, the hotfix branch,
+and annotated version tags. The push transcript records a local bare repository
+used as origin. This is a Git remote demonstration on the same computer, not a
+hosted repository or independent off-device backup.
+
+Verification scope
+Repository tests use real Room with Robolectric and Retrofit with MockWebServer.
+State tests verify retained ViewModels, saved form fields, and repeated submission.
+Backend tests verify persistence, CRUD, retries, conflicts and tombstones.
+These automated checks do not constitute physical-device or emulator UI testing.
