@@ -1,0 +1,27 @@
+GitHub publication and verification
+Repository: https://github.com/nabinoddd/BugTracker
+
+$ git push --atomic -u origin main feature/room-retrofit feature/lifecycle-retry hotfix/prevent-duplicate-submissions refs/tags/v1.0 refs/tags/v1.1
+To https://github.com/nabinoddd/BugTracker.git
+ * [new branch]      main -> main
+ * [new branch]      feature/room-retrofit -> feature/room-retrofit
+ * [new branch]      feature/lifecycle-retry -> feature/lifecycle-retry
+ * [new branch]      hotfix/prevent-duplicate-submissions -> hotfix/prevent-duplicate-submissions
+ * [new tag]         v1.0 -> v1.0
+ * [new tag]         v1.1 -> v1.1
+branch 'main' set up to track 'origin/main'.
+branch 'feature/room-retrofit' set up to track 'origin/feature/room-retrofit'.
+branch 'feature/lifecycle-retry' set up to track 'origin/feature/lifecycle-retry'.
+branch 'hotfix/prevent-duplicate-submissions' set up to track 'origin/hotfix/prevent-duplicate-submissions'.
+
+$ git ls-remote --heads --tags origin
+17578f2241bcd05e2dc5c742e0c0f4aa65427098	refs/heads/feature/lifecycle-retry
+d4eea675a34780bad2c94f7e77c08fd546c6b531	refs/heads/feature/room-retrofit
+01262e03b0c41f5415cb59cace0ca1899c244b27	refs/heads/hotfix/prevent-duplicate-submissions
+683851931a12189c6d8cefd238123f9782e3a906	refs/heads/main
+6a7852fdf73e31d2deb9ceaf5e9f2454076f8d49	refs/tags/v1.0
+6a4c7fdaa377a42ba9b8afcaf8b167f5568cc7eb	refs/tags/v1.0^{}
+49701435d4d3aaec31c8a8b9f28beb32ef3aa1e6	refs/tags/v1.1
+165cf41c3aec62d217f1faa10fead5b9bd77b11c	refs/tags/v1.1^{}
+
+All four branch heads and both annotated tag objects matched the local references.
